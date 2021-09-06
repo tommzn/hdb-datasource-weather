@@ -17,7 +17,7 @@ func TestDataSourceTestSuite(t *testing.T) {
 
 func (suite *DataSourceTestSuite) TestFetch() {
 
-	ds := New()
+	ds := New(loadConfigForTest())
 	event, err := ds.Fetch()
 	suite.Nil(err)
 	weather, ok := event.(*events.Weather)
