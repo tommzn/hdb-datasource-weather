@@ -9,6 +9,7 @@ Fetches weather data from Open Weather Map API using it's One Call API to get cu
 
 ## Config
 You have to pass the OpenWeatherMap API url, together with a geographical location (logitude, latitude) as config. Optional config param are units.
+More details about loading config at https://github.com/tommzn/go-config
 
 ### Config example with all required values
 ```yaml
