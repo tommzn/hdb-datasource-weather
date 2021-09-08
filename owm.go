@@ -14,6 +14,8 @@ import (
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
+// newWeatherApi creates a new OpenWeatherMap client with given config. If expects a secretsmanager which is
+// able to obtain api key as OWM_API_KEY.
 func newWeatherApi(conf config.Config, secretsmanager secrets.SecretsManager) (*OpenWeatherMapClient, error) {
 
 	apiKey, err := secretsmanager.Obtain("OWM_API_KEY")
@@ -48,6 +50,7 @@ func newWeatherApi(conf config.Config, secretsmanager secrets.SecretsManager) (*
 	}, nil
 }
 
+// Fetch calls the OpenWeatherMap One Call api to get the current weather and a 7-days forecast.
 func (client *OpenWeatherMapClient) Fetch() (interface{}, error) {
 
 	req := client.newRequestForOneCallApi()
@@ -68,6 +71,8 @@ func (client *OpenWeatherMapClient) Fetch() (interface{}, error) {
 	return toWeatherDataEvent(oneCallResponse, client.units), nil
 }
 
+// newRequestForOneCallApi creates a new http GET request to get weather data from OpenWeatherMap One Call API.
+// It ommits minutely/hourly weather data and alerts.
 func (client *OpenWeatherMapClient) newRequestForOneCallApi() *http.Request {
 
 	req, _ := http.NewRequest("GET", client.ownUrl+"/onecall", nil)
@@ -88,6 +93,7 @@ func (client *OpenWeatherMapClient) newRequestForOneCallApi() *http.Request {
 	return req
 }
 
+// toWeatherDataEvent converts response from OpenWeatherMap One Call API to a weather data event.
 func toWeatherDataEvent(oneCallResponse openWeatherMapOneCallApiResponse, units *string) events.WeatherData {
 
 	weatherData := events.WeatherData{
@@ -124,6 +130,7 @@ func toWeatherDataEvent(oneCallResponse openWeatherMapOneCallApiResponse, units 
 	return weatherData
 }
 
+// toWeatherDetailsEventData converts given OpenWeatherMap weather information to event data.
 func toWeatherDetailsEventData(weatherDetails weatherDetails) *events.WeatherDetails {
 	return &events.WeatherDetails{
 		ConditionId: weatherDetails.ConditionId,
@@ -133,6 +140,7 @@ func toWeatherDetailsEventData(weatherDetails weatherDetails) *events.WeatherDet
 	}
 }
 
+// asTimeStamp converts a unix epoch timestamp to a Protobuf timestamp.
 func asTimeStamp(epoch int64) *timestamppb.Timestamp {
 	return timestamppb.New(time.Unix(epoch, 0))
 }
