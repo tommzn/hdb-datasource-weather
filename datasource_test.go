@@ -2,6 +2,7 @@ package weather
 
 import (
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/suite"
 	events "github.com/tommzn/hdb-events-go"
@@ -17,14 +18,21 @@ func TestDataSourceTestSuite(t *testing.T) {
 
 func (suite *DataSourceTestSuite) TestFetch() {
 
-	ds := New(loadConfigForTest())
+	dateFormat := "20060102"
+	ds, err := New(loadConfigForTest(), secretsManagerForTest())
+	suite.Nil(err)
+	suite.NotNil(ds)
+
+	ownClient, ok := ds.(*OpenWeatherMapClient)
+	suite.True(ok)
+	suite.NotEqual("", ownClient.ownUrl)
+
 	event, err := ds.Fetch()
 	suite.Nil(err)
-	weather, ok := event.(*events.Weather)
+	suite.NotNil(event)
+
+	weatherData, ok := event.(events.WeatherData)
 	suite.True(ok)
-	suite.Equal(int64(27), weather.Temperature)
-	suite.Equal(int64(3), weather.Wind)
-	suite.Equal("Sunny", weather.Description)
-	suite.Equal(432.654, weather.Location.Longitude)
-	suite.Equal(321.764, weather.Location.Latitude)
+	suite.Equal(time.Now().Format(dateFormat), weatherData.Current.Timestamp.AsTime().Format(dateFormat))
+	suite.True(len(weatherData.Forecast) >= 7)
 }

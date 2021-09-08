@@ -2,9 +2,10 @@
 log:
   type: local
   loglevel: debug
-  
-aws:
-  dynamodb:
-    region: eu-west-5
-    tablename: DynamoDbTestTable
-    endpoint: http://localhost:8000
+
+weather:
+  owm:
+    url: https://api.openweathermap.org/data/2.5
+    latitude: 48.3596240
+    longitude: 11.3860876
+    units: metric
