@@ -21,6 +21,8 @@ jobs:
           go-version: ${{ env.goversion }}
       - name: Run tests
         run: go test -v  -covermode=count ./...
+        env:
+          OWM_API_KEY: ${{ secrets.OWM_API_KEY }}
 
   release:
     name: Go Package Release
