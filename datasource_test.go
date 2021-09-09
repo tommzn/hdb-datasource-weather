@@ -31,8 +31,8 @@ func (suite *DataSourceTestSuite) TestFetch() {
 	suite.Nil(err)
 	suite.NotNil(event)
 
-	weatherData, ok := event.(events.WeatherData)
+	weatherData, ok := event.(*events.WeatherData)
 	suite.True(ok)
-	suite.Equal(time.Now().Format(dateFormat), weatherData.Current.Timestamp.AsTime().Format(dateFormat))
+	suite.Equal(time.Now().UTC().Format(dateFormat), weatherData.Current.Timestamp.AsTime().Format(dateFormat))
 	suite.True(len(weatherData.Forecast) >= 7)
 }

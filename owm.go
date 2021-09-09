@@ -8,6 +8,8 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/golang/protobuf/proto"
+
 	config "github.com/tommzn/go-config"
 	secrets "github.com/tommzn/go-secrets"
 	events "github.com/tommzn/hdb-events-go"
@@ -51,7 +53,7 @@ func newWeatherApi(conf config.Config, secretsmanager secrets.SecretsManager) (*
 }
 
 // Fetch calls the OpenWeatherMap One Call api to get the current weather and a 7-days forecast.
-func (client *OpenWeatherMapClient) Fetch() (interface{}, error) {
+func (client *OpenWeatherMapClient) Fetch() (proto.Message, error) {
 
 	req := client.newRequestForOneCallApi()
 
@@ -94,7 +96,7 @@ func (client *OpenWeatherMapClient) newRequestForOneCallApi() *http.Request {
 }
 
 // toWeatherDataEvent converts response from OpenWeatherMap One Call API to a weather data event.
-func toWeatherDataEvent(oneCallResponse openWeatherMapOneCallApiResponse, units *string) events.WeatherData {
+func toWeatherDataEvent(oneCallResponse openWeatherMapOneCallApiResponse, units *string) *events.WeatherData {
 
 	weatherData := events.WeatherData{
 		Location: &events.Location{
@@ -127,7 +129,7 @@ func toWeatherDataEvent(oneCallResponse openWeatherMapOneCallApiResponse, units 
 			Weather:   toWeatherDetailsEventData(forecast.Weather[0]),
 		})
 	}
-	return weatherData
+	return &weatherData
 }
 
 // toWeatherDetailsEventData converts given OpenWeatherMap weather information to event data.
