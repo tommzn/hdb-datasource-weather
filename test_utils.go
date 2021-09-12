@@ -4,6 +4,7 @@ import (
 	"os"
 
 	config "github.com/tommzn/go-config"
+	log "github.com/tommzn/go-log"
 	secrets "github.com/tommzn/go-secrets"
 )
 
@@ -19,6 +20,12 @@ func loadConfigForTest() config.Config {
 	return config
 }
 
+// secretsManagerForTest returns a default secrets manager for testing
 func secretsManagerForTest() secrets.SecretsManager {
 	return secrets.NewSecretsManager()
+}
+
+// loggerForTest creates a new stdout logger for testing.
+func loggerForTest() log.Logger {
+	return log.NewLogger(log.Debug, nil, nil)
 }

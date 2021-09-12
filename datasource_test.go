@@ -19,7 +19,7 @@ func TestDataSourceTestSuite(t *testing.T) {
 func (suite *DataSourceTestSuite) TestFetch() {
 
 	dateFormat := "20060102"
-	ds, err := New(loadConfigForTest(), secretsManagerForTest())
+	ds, err := New(loadConfigForTest(), loggerForTest(), secretsManagerForTest())
 	suite.Nil(err)
 	suite.NotNil(ds)
 
