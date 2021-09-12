@@ -11,6 +11,9 @@ Parameters:
   EventArchiveQueue:
     Description: Name of a SQS queue used to archive events.
     Type: String
+  S3ConfigPolicyArn: 
+    Description: Policy ARN to enable config download from S3.
+    Type: String
   
 Resources:
   WeatherDataQueue:
@@ -42,6 +45,8 @@ Resources:
             Action: 
               - "sts:AssumeRole"
       Path: "/service-role/"
+      ManagedPolicyArns:
+        - !Ref "S3ConfigPolicyArn"
 
   LambdaExecutionPolicy:
     Type: AWS::IAM::Policy
@@ -108,3 +113,33 @@ Resources:
         - Arn
       PackageType: Image
       Timeout: 10
+
+  LambdaScheduledRule: 
+    Type: AWS::Events::Rule
+    DependsOn: 
+      - LambdaFunction
+    Properties: 
+      Description: !Join 
+          - ' '
+          - - "Schedule Lambda Function"
+            - !Ref FunctionName
+      ScheduleExpression: "rate(1 hours)"
+      State: "ENABLED"
+      Targets: 
+        - 
+          Arn: 
+            Fn::GetAtt: 
+              - "LambdaFunction"
+              - "Arn"
+          Id: "TargetFunctionV1"
+  
+  LambdaScheduledRulePermission: 
+    Type: AWS::Lambda::Permission
+    Properties: 
+      FunctionName: !Ref "FunctionName"
+      Action: "lambda:InvokeFunction"
+      Principal: "events.amazonaws.com"
+      SourceArn: 
+        Fn::GetAtt: 
+          - "LambdaScheduledRule"
+          - "Arn"
