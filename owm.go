@@ -56,7 +56,7 @@ func newWeatherApi(conf config.Config, secretsmanager secrets.SecretsManager) (*
 func (client *OpenWeatherMapClient) Fetch() (proto.Message, error) {
 
 	req := client.newRequestForOneCallApi()
-	client.ogger.Info("OWN URL: ", req.URL.String())
+	client.logger.Info("OWN URL: ", req.URL.String())
 
 	res, err := client.httpClient.Do(req)
 	if err != nil {
