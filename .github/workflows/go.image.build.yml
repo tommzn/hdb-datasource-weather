@@ -41,8 +41,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build_artifact_bin
-      - name: Move Go binary
-        run: mv build_artifact_bin ./lambda/
+          path: lambda
       - name: Log in to GitHub Docker Registry
         uses: docker/login-action@v1
         with:
