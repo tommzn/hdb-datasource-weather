@@ -41,6 +41,8 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build_artifact_bin
+      - name: Debug
+        run: ls -al
       - name: Move Go binary
         run: mv ./build_artifact_bin/build_artifact_bin ./lambda/
       - name: Log in to GitHub Docker Registry
