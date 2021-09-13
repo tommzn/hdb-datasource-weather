@@ -324,12 +324,16 @@ github.com/tommzn/go-utils v1.0.1/go.mod h1:TaQQLOtzHNmRx+/WUHgyNYvsqUX1N0JJEePC
 github.com/tommzn/hdb-datasource-core v1.0.0/go.mod h1:nsBn0qZ/6ZsK5ZhN+sxN/yKhnQwwFMuvJ+rYtmBhJMA=
 github.com/tommzn/hdb-datasource-core v1.0.1 h1:PraQ2xdy3Su3+jlKiFyU1s+DtAdJ8xxQT/o+6K5xajk=
 github.com/tommzn/hdb-datasource-core v1.0.1/go.mod h1:isa+1wzbeNKyN0NDuBjOYoQThV2i5dPf0ZG6J7+yjYQ=
+github.com/tommzn/hdb-datasource-core v1.0.2 h1:U38sWL9j6HyK5maz/IJb5TqLZ04UQO5H7OG7ua5go1s=
+github.com/tommzn/hdb-datasource-core v1.0.2/go.mod h1:isa+1wzbeNKyN0NDuBjOYoQThV2i5dPf0ZG6J7+yjYQ=
 github.com/tommzn/hdb-datasource-weather v1.0.1 h1:V6DZDjC6RQtSWkW7FF4D1wqXsPZbZt9YnrMyKzxTdew=
 github.com/tommzn/hdb-datasource-weather v1.0.1/go.mod h1:HYNi32hg0MSUwxc/qUl1nNiQ+gJT+W9p+5wzom7Yhbc=
 github.com/tommzn/hdb-datasource-weather v1.0.2 h1:OKLroEHQh1qAf3xVZ+IbU5k5u1zFxuQ/8GEFOjD554k=
 github.com/tommzn/hdb-datasource-weather v1.0.2/go.mod h1:7yrn6a32qBv7EwVwj8RYwtyuWYuEqwSqI0u4RppO3Rk=
 github.com/tommzn/hdb-datasource-weather v1.0.3 h1:Fqj9vepYl9DIuh6MrV76bxm96DLTNSLtKrK+lbnQtY8=
 github.com/tommzn/hdb-datasource-weather v1.0.3/go.mod h1:r3i9B/4/SadJcNTK+YXJ+jNCxHGkYWLUOe4VZxTcuUk=
+github.com/tommzn/hdb-datasource-weather v1.0.4 h1:49FvNIokVTK9ZLhSobTBmAFWer6Q3FL1AhoqxgOFIo8=
+github.com/tommzn/hdb-datasource-weather v1.0.4/go.mod h1:r3i9B/4/SadJcNTK+YXJ+jNCxHGkYWLUOe4VZxTcuUk=
 github.com/tommzn/hdb-events-go v1.0.2/go.mod h1:Pi0wRugUxNO81wqM4lFoie1C6oE8zUbq4h4TjSgvBi4=
 github.com/tommzn/hdb-events-go v1.0.4 h1:d0cytb3G8MvQkUN1QPVZjf3zWkpI0SWTSwrIv7gSxgE=
 github.com/tommzn/hdb-events-go v1.0.4/go.mod h1:Pi0wRugUxNO81wqM4lFoie1C6oE8zUbq4h4TjSgvBi4=

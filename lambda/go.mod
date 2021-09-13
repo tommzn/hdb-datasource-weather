@@ -9,6 +9,6 @@ require (
 	github.com/tommzn/go-log v1.0.2
 	github.com/tommzn/go-secrets v1.0.0
 	github.com/tommzn/hdb-datasource-core v1.0.2
-	github.com/tommzn/hdb-datasource-weather v1.0.3
+	github.com/tommzn/hdb-datasource-weather v1.0.4
 	golang.org/x/sys v0.0.0-20210910150752-751e447fb3d0 // indirect
 )
