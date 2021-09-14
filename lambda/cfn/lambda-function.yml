@@ -19,7 +19,7 @@ Resources:
   WeatherDataQueue:
     Type: AWS::SQS::Queue
     Properties:
-      MessageRetentionPeriod: 60
+      MessageRetentionPeriod: 3600
       ReceiveMessageWaitTimeSeconds: 5
       QueueName: !Ref WeatherEventQueue
 
@@ -123,7 +123,7 @@ Resources:
           - ' '
           - - "Schedule Lambda Function"
             - !Ref FunctionName
-      ScheduleExpression: "rate(1 hours)"
+      ScheduleExpression: "rate(1 hour)"
       State: "ENABLED"
       Targets: 
         - 
