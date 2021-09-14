@@ -1,4 +1,3 @@
-![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/tommzn/hdb-datasource-weather/lambda/go.mod)
 [![Actions Status](https://github.com/tommzn/hdb-datasource-weather/actions/workflows/go.image.build.yml/badge.svg)](https://github.com/tommzn/hdb-datasource-weather/actions)
 
 # Weather Data Collector
