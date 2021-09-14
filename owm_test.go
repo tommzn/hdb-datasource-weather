@@ -31,7 +31,7 @@ func (suite *OpenWeatherMapTestSuite) TestCreateWeatherApiClient() {
 	apiKey := os.Getenv(apiKeyEnv)
 	os.Unsetenv(apiKeyEnv)
 
-	ds1, err1 := New(loadConfigForTest(), suite.logger, secretsManagerForTest())
+	ds1, err1 := New(loadConfigForTest(), secretsManagerForTest())
 	suite.NotNil(err1)
 	suite.Equal("Secret not found: OWM_API_KEY", err1.Error())
 	suite.Nil(ds1)
@@ -41,7 +41,7 @@ func (suite *OpenWeatherMapTestSuite) TestCreateWeatherApiClient() {
 	yamlConfig := ""
 	config2, err := config.NewStaticConfigSource(yamlConfig).Load()
 	suite.Nil(err)
-	ds2, err2 := New(config2, loggerForTest(), secretsManagerForTest())
+	ds2, err2 := New(config2, secretsManagerForTest())
 	suite.NotNil(err2)
 	suite.Equal("Missing OpenWeatherMap url.", err2.Error())
 	suite.Nil(ds2)
@@ -49,7 +49,7 @@ func (suite *OpenWeatherMapTestSuite) TestCreateWeatherApiClient() {
 	yamlConfig = yamlConfig + "weather.owm.url: https://test.example.com" + "\n"
 	config3, err := config.NewStaticConfigSource(yamlConfig).Load()
 	suite.Nil(err)
-	ds3, err3 := New(config3, loggerForTest(), secretsManagerForTest())
+	ds3, err3 := New(config3, secretsManagerForTest())
 	suite.NotNil(err3)
 	suite.Equal("Missing OpenWeatherMap location, latitude.", err3.Error())
 	suite.Nil(ds3)
@@ -57,7 +57,7 @@ func (suite *OpenWeatherMapTestSuite) TestCreateWeatherApiClient() {
 	yamlConfig = yamlConfig + "weather.owm.latitude: 123.456" + "\n"
 	config4, err := config.NewStaticConfigSource(yamlConfig).Load()
 	suite.Nil(err)
-	ds4, err4 := New(config4, loggerForTest(), secretsManagerForTest())
+	ds4, err4 := New(config4, secretsManagerForTest())
 	suite.NotNil(err4)
 	suite.Equal("Missing OpenWeatherMap location, longitude.", err4.Error())
 	suite.Nil(ds4)
@@ -65,7 +65,7 @@ func (suite *OpenWeatherMapTestSuite) TestCreateWeatherApiClient() {
 	yamlConfig = yamlConfig + "weather.owm.longitude: 123.456" + "\n"
 	config5, err := config.NewStaticConfigSource(yamlConfig).Load()
 	suite.Nil(err)
-	ds5, err5 := New(config5, loggerForTest(), secretsManagerForTest())
+	ds5, err5 := New(config5, secretsManagerForTest())
 	suite.Nil(err5)
 	suite.NotNil(ds5)
 }
@@ -96,7 +96,7 @@ func (suite *OpenWeatherMapTestSuite) TestWithResponseError() {
 	apiKey := os.Getenv(apiKeyEnv)
 	os.Setenv(apiKeyEnv, "xxx")
 
-	ds, err := New(loadConfigForTest(), loggerForTest(), secretsManagerForTest())
+	ds, err := New(loadConfigForTest(), secretsManagerForTest())
 	suite.Nil(err)
 	suite.NotNil(ds)
 
@@ -111,7 +111,7 @@ func (suite *OpenWeatherMapTestSuite) TestWithResponseError() {
 	yamlConfig = yamlConfig + "weather.owm.longitude: 123.456" + "\n"
 	config1, err1 := config.NewStaticConfigSource(yamlConfig).Load()
 	suite.Nil(err1)
-	ds1, err1 := New(config1, loggerForTest(), secretsManagerForTest())
+	ds1, err1 := New(config1, secretsManagerForTest())
 	event1, err1 := ds1.Fetch()
 	suite.NotNil(err1)
 	suite.Nil(event1)

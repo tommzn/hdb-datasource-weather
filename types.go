@@ -2,8 +2,6 @@ package weather
 
 import (
 	"net/http"
-
-	log "github.com/tommzn/go-log"
 )
 
 //
@@ -61,11 +59,22 @@ type forecastTemperatures struct {
 // OpenWeatherMapClient handles requests for current weather and a 7-days forecast to API provides by Open Weather Map.
 // It can be used as a datasource directly.
 type OpenWeatherMapClient struct {
-	ownUrl     string
-	longitude  string
-	latitude   string
-	apiKey     string
-	units      *string
+
+	// OpenWeatherMap api url.
+	ownUrl string
+
+	// Geographic location (longitude) weather data should be requested for.
+	longitude string
+
+	// Geographic location (latitude) weather data should be requested for.
+	latitude string
+
+	// An api key used to access to OpenWeatherMap api.
+	apiKey string
+
+	// Unit for temperature and wind speed. If nil, OpenWeatherMap uses a default value.
+	units *string
+
+	// Http client to call OpenWeatherMap api.
 	httpClient *http.Client
-	logger     log.Logger
 }
