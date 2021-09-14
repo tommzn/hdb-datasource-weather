@@ -57,6 +57,8 @@ github.com/aws/aws-sdk-go v1.40.40 h1:U4dsfnUSswWSy+2qA0018HJBfsd9RHm3RvLqRdkRRT
 github.com/aws/aws-sdk-go v1.40.40/go.mod h1:585smgzpB/KqRA+K3y/NL/oYRqQvpNJYvLm+LY1U59Q=
 github.com/aws/aws-sdk-go v1.40.41 h1:v/Y4bB8+wHCONtKV+fuHTzLiqC08lk8e9HqYhRB9PBQ=
 github.com/aws/aws-sdk-go v1.40.41/go.mod h1:585smgzpB/KqRA+K3y/NL/oYRqQvpNJYvLm+LY1U59Q=
+github.com/aws/aws-sdk-go v1.40.42 h1:LbnRM4D9fAmNZxMAZx21Efpp5MKHx2BAETS+pn90lxI=
+github.com/aws/aws-sdk-go v1.40.42/go.mod h1:585smgzpB/KqRA+K3y/NL/oYRqQvpNJYvLm+LY1U59Q=
 github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973/go.mod h1:Dwedo/Wpr24TaqPxmxbtue+5NUziq4I4S80YR8gNf3Q=
 github.com/beorn7/perks v1.0.0/go.mod h1:KWe93zE9D1o94FZ5RNwFwVgaQK1VOXiVxmqh+CedLV8=
 github.com/bgentry/speakeasy v0.1.0/go.mod h1:+zsyZBPWlz7T6j88CTgSN5bM796AkVf0kBD4zp0CCIs=
@@ -334,6 +336,8 @@ github.com/tommzn/hdb-datasource-weather v1.0.3 h1:Fqj9vepYl9DIuh6MrV76bxm96DLTN
 github.com/tommzn/hdb-datasource-weather v1.0.3/go.mod h1:r3i9B/4/SadJcNTK+YXJ+jNCxHGkYWLUOe4VZxTcuUk=
 github.com/tommzn/hdb-datasource-weather v1.0.4 h1:49FvNIokVTK9ZLhSobTBmAFWer6Q3FL1AhoqxgOFIo8=
 github.com/tommzn/hdb-datasource-weather v1.0.4/go.mod h1:r3i9B/4/SadJcNTK+YXJ+jNCxHGkYWLUOe4VZxTcuUk=
+github.com/tommzn/hdb-datasource-weather v1.0.6 h1:BvsWl1zDyOn8VEJPyC+M7NGF7WNq7UtpL2LgQKa9wG8=
+github.com/tommzn/hdb-datasource-weather v1.0.6/go.mod h1:gYsJg3uwsB6r9MU85ftGxIYM6oCwaxxMeGkwJNA6G5k=
 github.com/tommzn/hdb-events-go v1.0.2/go.mod h1:Pi0wRugUxNO81wqM4lFoie1C6oE8zUbq4h4TjSgvBi4=
 github.com/tommzn/hdb-events-go v1.0.4 h1:d0cytb3G8MvQkUN1QPVZjf3zWkpI0SWTSwrIv7gSxgE=
 github.com/tommzn/hdb-events-go v1.0.4/go.mod h1:Pi0wRugUxNO81wqM4lFoie1C6oE8zUbq4h4TjSgvBi4=
