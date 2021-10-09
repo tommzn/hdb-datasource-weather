@@ -37,7 +37,12 @@ OpenWeatherMap requires an API key to call the One Call API. You have to pass a 
 After creating a new datasource, you can fetch current weather data and a forecast. If anything works well Fetch will return a [weather data struct](https://github.com/tommzn/hdb-events-go/blob/main/weather.pb.go) or otherwise an error.
 ```golang
 
-    datasource, err := New(config, secretsmanager)
+    import (
+       weather "github.com/tommzn/hdb-datasource-weather"  
+       events "github.com/tommzn/hdb-events-go"  
+    )
+    
+    datasource, err := weather.New(config, secretsmanager)
     if err != nil {
         panic(err)
     }
