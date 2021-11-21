@@ -27,3 +27,6 @@ aws:
   sqs:
     region: eu-west-1
 ```
+
+# Links
+- [HomeDashboard Documentation](https://github.com/tommzn/hdb-docs/wiki)

@@ -54,3 +54,6 @@ After creating a new datasource, you can fetch current weather data and a foreca
 
     fmt.Printf("Current Temperature: %.2f\n", weatherData.(events.WeatherData).Current.Temperature)
 ```
+
+# Links
+- [HomeDashboard Documentation](https://github.com/tommzn/hdb-docs/wiki)
