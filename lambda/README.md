@@ -1,4 +1,5 @@
 [![Actions Status](https://github.com/tommzn/hdb-datasource-weather/actions/workflows/go.image.build.yml/badge.svg)](https://github.com/tommzn/hdb-datasource-weather/actions)
+[![CircleCI](https://circleci.com/gh/tommzn/hdb-datasource-weather/tree/main.svg?style=svg)](https://circleci.com/gh/tommzn/hdb-datasource-weather/tree/main)
 
 # Weather Data Collector
 This package composes a [data collector](https://github.com/tommzn/hdb-datasource-core/collector.go) and [weather data source](https://github.com/tommzn/hdb-datasource-weather) to fetch weather data and publish it to a SQS queue.
