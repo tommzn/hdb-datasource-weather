@@ -103,10 +103,11 @@ func toWeatherDataEvent(oneCallResponse openWeatherMapOneCallApiResponse, units 
 			Latitude:  oneCallResponse.Latitude,
 		},
 		Current: &events.CurrentWeather{
-			Timestamp:   asTimeStamp(oneCallResponse.Current.TimeStamp),
-			Temperature: oneCallResponse.Current.Temperature,
-			WindSpeed:   oneCallResponse.Current.WindSpeed,
-			Weather:     toWeatherDetailsEventData(oneCallResponse.Current.Weather[0]),
+			Timestamp:     asTimeStamp(oneCallResponse.Current.TimeStamp),
+			Temperature:   oneCallResponse.Current.Temperature,
+			WindSpeed:     oneCallResponse.Current.WindSpeed,
+			WindDirection: oneCallResponse.Current.WindDirection,
+			Weather:       toWeatherDetailsEventData(oneCallResponse.Current.Weather[0]),
 		},
 		Forecast: []*events.ForecastWeather{},
 	}

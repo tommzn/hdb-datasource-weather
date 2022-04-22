@@ -22,10 +22,11 @@ type openWeatherMapOneCallApiResponse struct {
 
 // currentWeatherData contains current weather information
 type currentWeatherData struct {
-	TimeStamp   int64            `json:"dt"`         // Current time, Unix (Epoch), UTC
-	Temperature float64          `json:"temp"`       // Temperature. Units - default: kelvin, metric: Celsius, imperial: Fahrenheit
-	WindSpeed   float64          `json:"wind_speed"` // Wind speed. Wind speed. Units – default: metre/sec, metric: metre/sec, imperial: miles/hour
-	Weather     []weatherDetails `json:"weather"`    // Weather details
+	TimeStamp     int64            `json:"dt"`         // Current time, Unix (Epoch), UTC
+	Temperature   float64          `json:"temp"`       // Temperature. Units - default: kelvin, metric: Celsius, imperial: Fahrenheit
+	WindSpeed     float64          `json:"wind_speed"` // Wind speed. Wind speed. Units – default: metre/sec, metric: metre/sec, imperial: miles/hour
+	WindDirection int64            `json:"wind_deg"`   // Wind direction, degrees (meteorological)
+	Weather       []weatherDetails `json:"weather"`    // Weather details
 }
 
 // weatherDetails contains information of current weather or forecast
