@@ -107,6 +107,7 @@ func toWeatherDataEvent(oneCallResponse openWeatherMapOneCallApiResponse, units 
 			Temperature:   oneCallResponse.Current.Temperature,
 			WindSpeed:     oneCallResponse.Current.WindSpeed,
 			WindDirection: oneCallResponse.Current.WindDirection,
+			WindGust:      oneCallResponse.Current.WindGust,
 			Weather:       toWeatherDetailsEventData(oneCallResponse.Current.Weather[0]),
 		},
 		Forecast: []*events.ForecastWeather{},

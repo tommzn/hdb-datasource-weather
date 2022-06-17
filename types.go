@@ -26,6 +26,7 @@ type currentWeatherData struct {
 	Temperature   float64          `json:"temp"`       // Temperature. Units - default: kelvin, metric: Celsius, imperial: Fahrenheit
 	WindSpeed     float64          `json:"wind_speed"` // Wind speed. Wind speed. Units – default: metre/sec, metric: metre/sec, imperial: miles/hour
 	WindDirection int64            `json:"wind_deg"`   // Wind direction, degrees (meteorological)
+	WindGust      float64          `json:"wind_gust"`  // Wind gust. Wind gust. Units – default: metre/sec, metric: metre/sec, imperial: miles/hour.
 	Weather       []weatherDetails `json:"weather"`    // Weather details
 }
 
