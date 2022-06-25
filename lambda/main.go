@@ -26,7 +26,7 @@ func bootstrap() (core.Collector, error) {
 	conf := loadConfig()
 	secretsManager := newSecretsManager()
 	logger := newLogger(conf, secretsManager)
-	datasource, err := weather.New(conf, secretsManager)
+	datasource, err := weather.New(conf, secretsManager, logger)
 	if err != nil {
 		return nil, err
 	}
