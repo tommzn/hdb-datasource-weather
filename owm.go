@@ -73,10 +73,7 @@ func (client *OpenWeatherMapClient) Fetch() (proto.Message, error) {
 	defer res.Body.Close()
 	b, _ := ioutil.ReadAll(res.Body)
 	client.logger.Debugf("OWM Response: %s", string(b))
-
-	var oneCallResponse openWeatherMapOneCallApiResponse
-	json.Unmarshal(b, &oneCallResponse)
-	return toWeatherDataEvent(oneCallResponse, client.units), nil
+	return toWeatherDataEvent(toOpenWeatherMapOneCallApiResponse(b), client.units), nil
 }
 
 // newRequestForOneCallApi creates a new http GET request to get weather data from OpenWeatherMap One Call API.
@@ -153,4 +150,11 @@ func toWeatherDetailsEventData(weatherDetails weatherDetails) *events.WeatherDet
 // asTimeStamp converts a unix epoch timestamp to a Protobuf timestamp.
 func asTimeStamp(epoch int64) *timestamppb.Timestamp {
 	return timestamppb.New(time.Unix(epoch, 0))
+}
+
+// ToOpenWeatherMapOneCallApiResponse converts passed response payload to a response object.
+func toOpenWeatherMapOneCallApiResponse(response []byte) openWeatherMapOneCallApiResponse {
+	var oneCallResponse openWeatherMapOneCallApiResponse
+	json.Unmarshal(response, &oneCallResponse)
+	return oneCallResponse
 }

@@ -1,6 +1,8 @@
 package weather
 
 import (
+	"fmt"
+	"io/ioutil"
 	"os"
 	"testing"
 	"time"
@@ -115,6 +117,18 @@ func (suite *OpenWeatherMapTestSuite) TestWithResponseError() {
 	event1, err1 := ds1.Fetch()
 	suite.NotNil(err1)
 	suite.Nil(event1)
+}
+
+func (suite *OpenWeatherMapTestSuite) TestConvertOWMResponse() {
+
+	b, err := ioutil.ReadFile("fixtures/own_response_01.json")
+	suite.Nil(err)
+	owmResponse := toOpenWeatherMapOneCallApiResponse(b)
+	suite.True(owmResponse.Current.WindGust > 0)
+
+	event := toWeatherDataEvent(owmResponse, nil)
+	suite.True(event.Current.WindGust > 0)
+	fmt.Printf("1: %.2f, 2: %.2f\n", owmResponse.Current.WindGust, event.Current.WindGust)
 }
 
 func openWeatherMapOneCallApiResponseForTest() openWeatherMapOneCallApiResponse {
