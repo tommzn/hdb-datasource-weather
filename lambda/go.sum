@@ -485,6 +485,8 @@ github.com/tommzn/hdb-datasource-weather v1.0.11 h1:qCyFsRmURbxubIitn4BC4toIc+C5
 github.com/tommzn/hdb-datasource-weather v1.0.11/go.mod h1:jRrILr8x64dOpnPyA/eeYRSXda28UKq28Iz3g2mFT54=
 github.com/tommzn/hdb-datasource-weather v1.0.13 h1:6a4swgaA9NhUFe5sbxcNhek2futLitjiW/A1lcseq0w=
 github.com/tommzn/hdb-datasource-weather v1.0.13/go.mod h1:sZP2hzMw6LhLq/q9vPbRSC5d43X/ffzQM+fvA1N7LyQ=
+github.com/tommzn/hdb-datasource-weather v1.0.14 h1:D4gtAr+zXqPK0jhujhPKxTfhTzJszdkQTBs39MSagOM=
+github.com/tommzn/hdb-datasource-weather v1.0.14/go.mod h1:sZP2hzMw6LhLq/q9vPbRSC5d43X/ffzQM+fvA1N7LyQ=
 github.com/tommzn/hdb-events-go v1.0.2/go.mod h1:Pi0wRugUxNO81wqM4lFoie1C6oE8zUbq4h4TjSgvBi4=
 github.com/tommzn/hdb-events-go v1.0.4 h1:d0cytb3G8MvQkUN1QPVZjf3zWkpI0SWTSwrIv7gSxgE=
 github.com/tommzn/hdb-events-go v1.0.4/go.mod h1:Pi0wRugUxNO81wqM4lFoie1C6oE8zUbq4h4TjSgvBi4=
