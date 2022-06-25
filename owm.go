@@ -11,6 +11,7 @@ import (
 	"github.com/golang/protobuf/proto"
 
 	config "github.com/tommzn/go-config"
+	log "github.com/tommzn/go-log"
 	secrets "github.com/tommzn/go-secrets"
 	events "github.com/tommzn/hdb-events-go"
 	"google.golang.org/protobuf/types/known/timestamppb"
@@ -18,7 +19,7 @@ import (
 
 // newWeatherApi creates a new OpenWeatherMap client with given config. If expects a secretsmanager which is
 // able to obtain api key as OWM_API_KEY.
-func newWeatherApi(conf config.Config, secretsmanager secrets.SecretsManager) (*OpenWeatherMapClient, error) {
+func newWeatherApi(conf config.Config, secretsmanager secrets.SecretsManager, logger log.Logger) (*OpenWeatherMapClient, error) {
 
 	apiKey, err := secretsmanager.Obtain("OWM_API_KEY")
 	if err != nil {
@@ -42,6 +43,10 @@ func newWeatherApi(conf config.Config, secretsmanager secrets.SecretsManager) (*
 
 	units := conf.Get("weather.owm.units", nil)
 
+	if logger == nil {
+		logger = log.NewLoggerFromConfig(conf, secretsmanager)
+	}
+
 	return &OpenWeatherMapClient{
 		ownUrl:     *owmUrl,
 		latitude:   *latitude,
@@ -49,6 +54,7 @@ func newWeatherApi(conf config.Config, secretsmanager secrets.SecretsManager) (*
 		units:      units,
 		apiKey:     *apiKey,
 		httpClient: &http.Client{},
+		logger:     logger,
 	}, nil
 }
 
@@ -66,6 +72,7 @@ func (client *OpenWeatherMapClient) Fetch() (proto.Message, error) {
 	}
 	defer res.Body.Close()
 	b, _ := ioutil.ReadAll(res.Body)
+	client.logger.Debugf("OWM Response: %s", string(b))
 
 	var oneCallResponse openWeatherMapOneCallApiResponse
 	json.Unmarshal(b, &oneCallResponse)

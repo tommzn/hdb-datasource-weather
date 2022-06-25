@@ -2,6 +2,8 @@ package weather
 
 import (
 	"net/http"
+
+	log "github.com/tommzn/go-log"
 )
 
 //
@@ -79,4 +81,7 @@ type OpenWeatherMapClient struct {
 
 	// Http client to call OpenWeatherMap api.
 	httpClient *http.Client
+
+	// Logger
+	logger log.Logger
 }
