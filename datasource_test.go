@@ -35,4 +35,5 @@ func (suite *DataSourceTestSuite) TestFetch() {
 	suite.True(ok)
 	suite.Equal(time.Now().UTC().Format(dateFormat), weatherData.Current.Timestamp.AsTime().Format(dateFormat))
 	suite.True(len(weatherData.Forecast) >= 7)
+	suite.Len(weatherData.HourlyForecast, 48)
 }

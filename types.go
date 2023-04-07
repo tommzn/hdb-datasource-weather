@@ -20,6 +20,7 @@ type openWeatherMapOneCallApiResponse struct {
 	TimeZoneOffset int                   `json:"timezone_offset"` // Shift in seconds from UTC
 	Current        currentWeatherData    `json:"current"`         // Current weather data API response
 	DailyForcast   []forecastWeatherData `json:"daily"`           // 7-days forecast weather data
+	HourlyForcast  []currentWeatherData  `json:"hourly"`          // 48-hours forecast weather data
 }
 
 // currentWeatherData contains current weather information
@@ -29,6 +30,7 @@ type currentWeatherData struct {
 	WindSpeed     float64          `json:"wind_speed"` // Wind speed. Wind speed. Units – default: metre/sec, metric: metre/sec, imperial: miles/hour
 	WindDirection int64            `json:"wind_deg"`   // Wind direction, degrees (meteorological)
 	WindGust      float64          `json:"wind_gust"`  // Wind gust. Wind gust. Units – default: metre/sec, metric: metre/sec, imperial: miles/hour.
+	Rain          float64          `json:"rain"`       // Rain, precipitation in mm/h (Liter/hour)
 	Weather       []weatherDetails `json:"weather"`    // Weather details
 }
 

@@ -91,8 +91,8 @@ func (client *OpenWeatherMapClient) newRequestForOneCallApi() *http.Request {
 		query.Add("units", *client.units)
 	}
 
-	// We're not interested in a minutely or hourly forecast in the moment and alerts are skipped as well
-	query.Add("exclude", "minutely,hourly,alerts")
+	// We're not interested in a minutely in the moment and alerts are skipped as well
+	query.Add("exclude", "minutely,alerts")
 
 	req.URL.RawQuery = query.Encode()
 	return req
@@ -112,9 +112,11 @@ func toWeatherDataEvent(oneCallResponse openWeatherMapOneCallApiResponse, units 
 			WindSpeed:     oneCallResponse.Current.WindSpeed,
 			WindDirection: oneCallResponse.Current.WindDirection,
 			WindGust:      oneCallResponse.Current.WindGust,
+			Rain:          oneCallResponse.Current.Rain,
 			Weather:       toWeatherDetailsEventData(oneCallResponse.Current.Weather[0]),
 		},
-		Forecast: []*events.ForecastWeather{},
+		Forecast:       []*events.ForecastWeather{},
+		HourlyForecast: []*events.CurrentWeather{},
 	}
 	if units != nil {
 		weatherData.Units = *units
@@ -132,6 +134,17 @@ func toWeatherDataEvent(oneCallResponse openWeatherMapOneCallApiResponse, units 
 			},
 			WindSpeed: forecast.WindSpeed,
 			Weather:   toWeatherDetailsEventData(forecast.Weather[0]),
+		})
+	}
+	for _, hourlyForecast := range oneCallResponse.HourlyForcast {
+		weatherData.HourlyForecast = append(weatherData.HourlyForecast, &events.CurrentWeather{
+			Timestamp:     asTimeStamp(hourlyForecast.TimeStamp),
+			Temperature:   hourlyForecast.Temperature,
+			WindSpeed:     hourlyForecast.WindSpeed,
+			WindDirection: hourlyForecast.WindDirection,
+			WindGust:      hourlyForecast.WindGust,
+			Rain:          hourlyForecast.Rain,
+			Weather:       toWeatherDetailsEventData(hourlyForecast.Weather[0]),
 		})
 	}
 	return &weatherData

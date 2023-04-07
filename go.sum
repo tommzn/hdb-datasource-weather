@@ -498,6 +498,8 @@ github.com/tommzn/hdb-events-go v1.0.11 h1:gkxRQ2cUreglCRfijNHywz586moLm5uTz+wwv
 github.com/tommzn/hdb-events-go v1.0.11/go.mod h1:Pi0wRugUxNO81wqM4lFoie1C6oE8zUbq4h4TjSgvBi4=
 github.com/tommzn/hdb-events-go v1.0.14 h1:mWNhWtut8tfurz/yGziGF8Z8nprgra4tCrBSlgEKmco=
 github.com/tommzn/hdb-events-go v1.0.14/go.mod h1:Pi0wRugUxNO81wqM4lFoie1C6oE8zUbq4h4TjSgvBi4=
+github.com/tommzn/hdb-events-go v1.0.15 h1:o5XJn/kB/bDlnfEPwozRKChBv7q51SDfNdIdJnKFLyE=
+github.com/tommzn/hdb-events-go v1.0.15/go.mod h1:Pi0wRugUxNO81wqM4lFoie1C6oE8zUbq4h4TjSgvBi4=
 github.com/tv42/httpunix v0.0.0-20150427012821-b75d8614f926/go.mod h1:9ESjWnEqriFuLhtthL60Sar/7RFoluCcXsuvEwTV5KM=
 github.com/urfave/cli/v2 v2.2.0/go.mod h1:SE9GqnLQmjVa0iPEY0f1w3ygNIYcIJ0OKPMoW2caLfQ=
 github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2/go.mod h1:UETIi67q53MR2AWcXfiuqkDkRtnGDLqkBTpCHuJHxtU=
