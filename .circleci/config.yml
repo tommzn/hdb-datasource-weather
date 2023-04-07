@@ -47,7 +47,7 @@ jobs:
     steps:
       - slack/notify:
           template: success_tagged_deploy_1
-  
+
 workflows:
   version: 2
   aws-lambda-deploy:
@@ -57,30 +57,31 @@ workflows:
             tags:
               only: /^lambda\/v[0-9]+(\.[0-9]+)*$/
             branches:
-              only: main
+              ignore: /.*/
       - ecr-build-and-deploy:
+          context: aws-env
           filters:
             tags:
               only: /^lambda\/v[0-9]+(\.[0-9]+)*$/
             branches:
-              only: main
+              ignore: /.*/
           requires:
             - go-build
       - lambda-func-update:
+          context: aws-env
           filters:
-            branches:
-              ignore: /.*/
             tags:
               only: /^lambda\/v[0-9]+(\.[0-9]+)*$/
+            branches:
+              ignore: /.*/
           requires:
             - ecr-build-and-deploy
       - notify: 
-          context: slack-secrets
+          context: slack-env
           filters:
-            branches:
-              ignore: /.*/
             tags:
               only: /^lambda\/v[0-9]+(\.[0-9]+)*$/
+            branches:
+              ignore: /.*/
           requires:
             - lambda-func-update
-          
