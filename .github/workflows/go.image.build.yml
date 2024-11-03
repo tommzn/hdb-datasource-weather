@@ -27,7 +27,7 @@ jobs:
   ecr-image-build:
     name: AWS ECR Image Build
     needs: [go-build]
-    uses:  tommzn/github-ci/.github/workflows/go.aws.ecr.image.v2.yml@v1.0.92
+    uses:  tommzn/github-ci/.github/workflows/go.aws.ecr.image.v2.yml@v1.0.93
     with:
       work-directory: './lambda'
       aws-region: eu-central-1
