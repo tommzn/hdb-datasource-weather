@@ -27,7 +27,7 @@ jobs:
   ecr-image-build:
     name: AWS ECR Image Build
     needs: [go-build]
-    uses:  tommzn/github-ci/.github/workflows/go.aws.ecr.image.v2.yml@v1.0.96
+    uses:  tommzn/github-ci/.github/workflows/go.aws.ecr.image.v2.yml@v1.0.98
     with:
       work-directory: './lambda'
       aws-region: eu-central-1
@@ -37,7 +37,7 @@ jobs:
   lambda-func-update:
     name: AWS Lambda Function Code Update
     needs: [ecr-image-build]
-    uses:  tommzn/github-ci/.github/workflows/aws.lambda.func.update.yml@v1.0.97
+    uses:  tommzn/github-ci/.github/workflows/aws.lambda.func.update.yml@v1.0.98
     with:
       aws-region: eu-central-1
     secrets:
