@@ -1,6 +1,7 @@
 package weather
 
 import (
+	"os"
 	"testing"
 	"time"
 
@@ -17,6 +18,8 @@ func TestDataSourceTestSuite(t *testing.T) {
 }
 
 func (suite *DataSourceTestSuite) TestFetch() {
+
+	suite.skipCI()
 
 	dateFormat := "20060102"
 	ds, err := New(loadConfigForTest(), secretsManagerForTest(), loggerForTest())
@@ -36,4 +39,10 @@ func (suite *DataSourceTestSuite) TestFetch() {
 	suite.Equal(time.Now().UTC().Format(dateFormat), weatherData.Current.Timestamp.AsTime().Format(dateFormat))
 	suite.True(len(weatherData.Forecast) >= 7)
 	suite.Len(weatherData.HourlyForecast, 48)
+}
+
+func (suite *DataSourceTestSuite) skipCI() {
+	if _, isSet := os.LookupEnv("CI"); isSet {
+		suite.T().SkipNow()
+	}
 }
