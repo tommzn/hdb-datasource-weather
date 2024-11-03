@@ -25,13 +25,13 @@ jobs:
     secrets:
         cr-pat: ${{ secrets.CR_PAT }}
   ecr-image-build:
-    name: GHRC Image Build
+    name: AWS ECR Image Build
     needs: [go-build]
     uses:  tommzn/github-ci/.github/workflows/go.aws.ecr.image.v2.yml@v1.0.92
     with:
       work-directory: './lambda'
       aws-region: eu-central-1
     secrets:
-        iam-role: ${{ secrets.IAM-ROLE }}
+        iam-role: ${{ secrets.IAM_ROLE }}
   
         
