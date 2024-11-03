@@ -13,7 +13,7 @@ jobs:
   go-build:
     name: Go Build
     needs: [go-test]
-    uses:  tommzn/github-ci/.github/workflows/go.build.v2.yml@v1.0.87
+    uses:  tommzn/github-ci/.github/workflows/go.build.v2.yml@v1.0.90
     with:
       work-directory: './lambda'
   image-build:
