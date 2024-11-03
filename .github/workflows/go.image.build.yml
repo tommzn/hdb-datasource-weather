@@ -7,15 +7,15 @@ on:
 jobs:
   go-test:
     name: Go Test
-    uses:  tommzn/github-ci/.github/workflows/go.test.v2.yml@v1.0.86
+    uses:  tommzn/github-ci/.github/workflows/go.test.v2.yml@v1.0.87
     inputs:
-      working-directory: './lambda'
+      work-directory: './lambda'
   go-build:
     name: Go Build
     needs: [go-test]
-    uses:  tommzn/github-ci/.github/workflows/go.build.v2.yml@v1.0.86
+    uses:  tommzn/github-ci/.github/workflows/go.build.v2.yml@v1.0.87
     inputs:
-      working-directory: './lambda'
+      work-directory: './lambda'
   image-build:
     name: Build and Deploy Docker Image
     needs: [go-build]
