@@ -3,34 +3,17 @@ on:
   create:
     tags:
       - lambda/v*
-  
+
 jobs:
+  go-test:
+    uses:  tommzn/github-ci/.github/workflows/go/go.test.yml@v1.0.84
+    inputs:
+      working-directory: './lambda'
   go-build:
-    name: Go Test & Binary Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Get Go version
-        run: echo "goversion=`egrep -i '^go [1-2][.][0-9]+$' go.mod | sed 's/go //' | sed 's/$/.x/'`" >> $GITHUB_ENV
-        working-directory: ./lambda
-      - name: Install Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: ${{ env.goversion }}
-      - name: Run tests
-        run: go test -v  -covermode=count ./...
-        working-directory: ./lambda
-      - name: Build Binary
-        run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -v -o build_artifact_bin
-        working-directory: ./lambda
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: build_artifact_bin
-          path: ./lambda/build_artifact_bin
-          retention-days: 1
-        
+    needs: [go-test]
+    uses:  tommzn/github-ci/.github/workflows/go/go.build.yml@v1.0.84
+    inputs:
+      working-directory: './lambda'
   image-build:
     name: Build and Deploy Docker Image
     needs: [go-build]
