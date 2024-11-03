@@ -7,7 +7,7 @@ on:
 jobs:
   go-test:
     name: Go Test
-    uses:  tommzn/github-ci/.github/workflows/go.test.v2.yml@v1.0.87
+    uses:  tommzn/github-ci/.github/workflows/go.test.v2.yml@v1.0.88
     with:
       work-directory: './lambda'
   go-build:
