@@ -1,6 +1,6 @@
 module github.com/tommzn/hdb-datasource-weather/lambda
 
-go 1.21
+go 1.23
 
 require (
 	github.com/aws/aws-lambda-go v1.28.0
