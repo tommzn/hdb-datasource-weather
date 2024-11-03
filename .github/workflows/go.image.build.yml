@@ -34,7 +34,7 @@ jobs:
     secrets:
         iam-role: ${{ secrets.IAM_ROLE }}
         ecr-registry-uri: ${{ secrets.ECR_REGISTRY_URI }}
-  ecr-image-build:
+  lambda-func-update:
     name: AWS Lambda Function Code Update
     needs: [ecr-image-build]
     uses:  tommzn/github-ci/.github/workflows/aws.lambda.func.update.yml@v1.0.97
@@ -43,7 +43,7 @@ jobs:
     secrets:
         iam-role: ${{ secrets.IAM_ROLE_LAMBDA }}
         ecr-registry-uri: ${{ secrets.ECR_REGISTRY_URI }}
-        lambda-function: ${{ secrets.LAMBDA?FUNCTION }}
+        lambda-function: ${{ secrets.LAMBDA_FUNCTION }}
 
 
         
