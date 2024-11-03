@@ -29,6 +29,8 @@ func (suite *OpenWeatherMapTestSuite) SetupTest() {
 
 func (suite *OpenWeatherMapTestSuite) TestCreateWeatherApiClient() {
 
+	suite.skipCI()
+
 	apiKeyEnv := "OWM_API_KEY"
 	apiKey := os.Getenv(apiKeyEnv)
 	os.Unsetenv(apiKeyEnv)
@@ -173,4 +175,10 @@ func openWeatherMapOneCallApiResponseForTest() openWeatherMapOneCallApiResponse 
 		})
 	}
 	return apiResponse
+}
+
+func (suite *OpenWeatherMapTestSuite) skipCI() {
+	if _, isSet := os.LookupEnv("CI"); isSet {
+		suite.T().SkipNow()
+	}
 }
